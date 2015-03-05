@@ -2,11 +2,11 @@
 FROM phusion/baseimage:0.9.16
 MAINTAINER Andreas Ihrig (RoboMod) <mod.andy@gmx.de>
 
-# Add config volume
-VOLUME /etc/mysql/conf.d
+# Add memcached volume
+VOLUME /etc/memcached.conf
 
-# Add db volume
-VOLUME /var/lib/mysql
+# Add config volume
+VOLUME /etc/nginx/nginx.conf
 
 # Use passenger-docker approach and scripts
 ENV HOME /root
@@ -15,4 +15,4 @@ RUN /build/scripts/install.sh
 
 CMD ["/sbin/my_init"]
 
-EXPOSE 3306
+EXPOSE 80 443
